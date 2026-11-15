@@ -36,7 +36,16 @@ public class MainActivity extends Activity {
         webView.setOverScrollMode(View.OVER_SCROLL_NEVER);
 
         setContentView(webView);
+// White Android navigation bar
+getWindow().setNavigationBarColor(Color.WHITE);
 
+if (android.os.Build.VERSION.SDK_INT >= 29) {
+    getWindow().setNavigationBarContrastEnforced(false);
+}
+
+getWindow().getDecorView().setSystemUiVisibility(
+    View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
+);
         webView.loadUrl(
             "https://sawtharw7-web.github.io/DayFlow/"
         );
