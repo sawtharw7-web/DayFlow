@@ -4,263 +4,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <meta name="theme-color" content="#101827">
+  <meta name="description" content="DayFlow - Your daily routine, habits and task planner.">
+
   <title>DayFlow - Daily Life Planner</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="manifest" href="manifest.webmanifest">
-<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
+  <!-- CSS -->
+  <link rel="stylesheet" href="./styles.css">
 
-    body {
-      background: #101827;
-      color: #f8fafc;
-      min-height: 100vh;
-    }
+  <!-- PWA -->
+  <link rel="manifest" href="./manifest.webmanifest">
 
-    .app {
-      display: flex;
-      min-height: 100vh;
-    }
-
-    .sidebar {
-      width: 240px;
-      background: #172235;
-      padding: 25px 18px;
-      border-right: 1px solid #29364b;
-    }
-
-    .logo {
-      font-size: 25px;
-      font-weight: bold;
-      color: #a78bfa;
-      margin-bottom: 35px;
-    }
-
-    .nav button {
-      display: block;
-      width: 100%;
-      padding: 13px;
-      margin-bottom: 9px;
-      border: none;
-      border-radius: 10px;
-      text-align: left;
-      background: transparent;
-      color: #b8c3d5;
-      font-size: 15px;
-      cursor: pointer;
-    }
-
-    .nav button.active,
-    .nav button:hover {
-      background: #29364b;
-      color: white;
-    }
-
-    main {
-      flex: 1;
-      padding: 30px;
-      max-width: 1200px;
-      margin: auto;
-      width: 100%;
-    }
-
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 30px;
-      flex-wrap: wrap;
-    }
-
-    .topbar h1 {
-      font-size: 27px;
-    }
-
-    .date {
-      color: #94a3b8;
-      margin-top: 8px;
-    }
-
-    .card {
-      background: #1c293d;
-      border: 1px solid #29364b;
-      padding: 22px;
-      border-radius: 16px;
-      margin-bottom: 20px;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-      margin-bottom: 20px;
-    }
-
-    .stat-number {
-      font-size: 30px;
-      font-weight: bold;
-      color: #a78bfa;
-      margin-top: 12px;
-    }
-
-    h2 {
-      font-size: 19px;
-      margin-bottom: 17px;
-    }
-
-    .routine-item,
-    .task-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      background: #26354b;
-      padding: 14px;
-      border-radius: 10px;
-      margin-bottom: 10px;
-    }
-
-    input[type="checkbox"] {
-      width: 19px;
-      height: 19px;
-      accent-color: #a78bfa;
-      cursor: pointer;
-    }
-
-    .done {
-      text-decoration: line-through;
-      color: #94a3b8;
-    }
-
-    .progress {
-      height: 10px;
-      background: #334155;
-      border-radius: 20px;
-      overflow: hidden;
-      margin-top: 15px;
-    }
-
-    .progress-bar {
-      height: 100%;
-      width: 0%;
-      background: #a78bfa;
-      transition: width .3s;
-    }
-
-    .add-area {
-      display: flex;
-      gap: 10px;
-      margin-top: 15px;
-    }
-
-    input[type="text"] {
-      flex: 1;
-      min-width: 0;
-      padding: 13px;
-      border-radius: 9px;
-      border: 1px solid #40506a;
-      background: #101827;
-      color: white;
-      outline: none;
-    }
-
-    .add-btn {
-      border: none;
-      background: #8b5cf6;
-      color: white;
-      padding: 12px 17px;
-      border-radius: 9px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .delete-btn {
-      margin-left: auto;
-      background: transparent;
-      border: none;
-      color: #f87171;
-      cursor: pointer;
-      font-size: 18px;
-    }
-
-    .page {
-      display: none;
-    }
-
-    .page.active {
-      display: block;
-    }
-
-    .quote {
-      color: #c4b5fd;
-      font-style: italic;
-      line-height: 1.6;
-    }
-
-    .empty {
-      color: #94a3b8;
-      padding: 10px 0;
-    }
-
-    @media(max-width: 700px) {
-      .app {
-        display: block;
-      }
-
-      .sidebar {
-        width: 100%;
-        padding: 15px;
-      }
-
-      .logo {
-        margin-bottom: 15px;
-      }
-
-      .nav {
-        display: flex;
-        overflow-x: auto;
-        gap: 5px;
-      }
-
-      .nav button {
-        white-space: nowrap;
-        width: auto;
-        margin: 0;
-      }
-
-      main {
-        padding: 18px;
-      }
-
-      .stats {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+  <!-- APP ICON -->
+  <link rel="icon" href="./assets/icon.png" type="image/png">
+  <link rel="apple-touch-icon" href="./assets/icon.png">
 </head>
 
 <body>
 
 <div class="app">
 
+  <!-- SIDEBAR -->
   <aside class="sidebar">
+
     <div class="logo">✦ DayFlow</div>
 
     <div class="nav">
-      <button class="active" data-page="dashboard">🏠 Dashboard</button>
-      <button data-page="routines">🌱 Daily Routine</button>
-      <button data-page="habits">🔥 Habits</button>
-      <button data-page="tasks">📝 My Tasks</button>
+      <button class="active" data-page="dashboard">
+        🏠 Dashboard
+      </button>
+
+      <button data-page="routines">
+        🌱 Daily Routine
+      </button>
+
+      <button data-page="habits">
+        🔥 Habits
+      </button>
+
+      <button data-page="tasks">
+        📝 My Tasks
+      </button>
     </div>
+
   </aside>
 
+  <!-- MAIN CONTENT -->
   <main>
 
     <header class="topbar">
@@ -268,45 +58,70 @@
         <h1 id="greeting">Good day!</h1>
         <p class="date" id="todayDate"></p>
       </div>
+
       <div>✨ Make today count</div>
     </header>
 
+    <!-- DASHBOARD -->
     <section id="dashboard" class="page active">
 
       <div class="card">
+
         <p class="quote">
           "Small steps every day lead to big changes."
         </p>
-        <h2 style="margin-top:15px;">Your daily journey 🌟</h2>
-        <p id="summary">Let's make today productive!</p>
+
+        <h2 style="margin-top:15px;">
+          Your daily journey 🌟
+        </h2>
+
+        <p id="summary">
+          Let's make today productive!
+        </p>
+
         <div class="progress">
           <div class="progress-bar" id="mainProgress"></div>
         </div>
+
         <p id="progressText" style="margin-top:10px;color:#c4b5fd;">
           0% completed
         </p>
+
       </div>
 
+      <!-- STATISTICS -->
       <div class="stats">
+
         <div class="card">
           <p>Daily Routines</p>
-          <div class="stat-number" id="routineCount">0/0</div>
+          <div class="stat-number" id="routineCount">
+            0/0
+          </div>
         </div>
+
         <div class="card">
           <p>My Tasks</p>
-          <div class="stat-number" id="taskCount">0</div>
+          <div class="stat-number" id="taskCount">
+            0
+          </div>
         </div>
+
         <div class="card">
           <p>Current Streak</p>
-          <div class="stat-number" id="streakCount">0 🔥</div>
+          <div class="stat-number" id="streakCount">
+            0 🔥
+          </div>
         </div>
+
       </div>
 
+      <!-- TODAY ROUTINES -->
       <div class="card">
         <h2>Today's Routine 🌱</h2>
         <div id="dashboardRoutines"></div>
       </div>
 
+      <!-- TODAY TASKS -->
       <div class="card">
         <h2>Today's Tasks 📝</h2>
         <div id="dashboardTasks"></div>
@@ -314,286 +129,107 @@
 
     </section>
 
+    <!-- ROUTINES PAGE -->
     <section id="routines" class="page">
+
       <div class="card">
+
         <h2>Daily Routine 🌱</h2>
+
         <p style="color:#94a3b8;margin-bottom:15px;">
           Build your day, one small step at a time.
         </p>
+
         <div id="routineList"></div>
 
         <div class="add-area">
-          <input id="routineInput" type="text"
-            placeholder="Add a daily activity...">
-          <button class="add-btn" onclick="addRoutine()">Add</button>
+
+          <input
+            id="routineInput"
+            type="text"
+            placeholder="Add a daily activity..."
+          >
+
+          <button
+            class="add-btn"
+            onclick="addRoutine()"
+          >
+            Add
+          </button>
+
         </div>
+
       </div>
+
     </section>
 
+    <!-- HABITS PAGE -->
     <section id="habits" class="page">
+
       <div class="card">
+
         <h2>Habit Tracker 🔥</h2>
-        <p class="quote">Consistency is more important than perfection.</p>
+
+        <p class="quote">
+          Consistency is more important than perfection.
+        </p>
+
         <div id="habitList" style="margin-top:20px;"></div>
+
       </div>
+
     </section>
 
+    <!-- TASKS PAGE -->
     <section id="tasks" class="page">
+
       <div class="card">
+
         <h2>My Tasks 📝</h2>
+
         <div id="taskList"></div>
 
         <div class="add-area">
-          <input id="taskInput" type="text"
-            placeholder="What do you need to do?">
-          <button class="add-btn" onclick="addTask()">Add</button>
+
+          <input
+            id="taskInput"
+            type="text"
+            placeholder="What do you need to do?"
+          >
+
+          <button
+            class="add-btn"
+            onclick="addTask()"
+          >
+            Add
+          </button>
+
         </div>
+
       </div>
+
     </section>
 
   </main>
+
 </div>
 
-<script src="app.js"></script>
-  const today = new Date();
-  const dateKey = today.toLocaleDateString("en-CA");
+<!-- MAIN JAVASCRIPT -->
+<script src="./app.js"></script>
 
-  document.getElementById("todayDate").textContent =
-    today.toLocaleDateString("en-US", {
-      weekday: "long",
-      year: "numeric",
-      month: "long",
-      day: "numeric"
+<!-- SERVICE WORKER -->
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function () {
+      navigator.serviceWorker.register("./sw.js")
+        .then(function (registration) {
+          console.log("DayFlow Service Worker Ready!");
+        })
+        .catch(function (error) {
+          console.error("Service Worker Error:", error);
+        });
     });
-
-  const hour = today.getHours();
-  document.getElementById("greeting").textContent =
-    hour < 12 ? "Good morning! ☀️" :
-    hour < 18 ? "Good afternoon! 🌤️" :
-    "Good evening! 🌙";
-
-  function load(key, fallback) {
-    try {
-      const value = JSON.parse(localStorage.getItem(key));
-      return value === null ? fallback : value;
-    } catch {
-      return fallback;
-    }
   }
-
-  let routines = load("dayflow_routines", [
-    {id:1, name:"Wake up early", dates:[]},
-    {id:2, name:"Drink enough water", dates:[]},
-    {id:3, name:"Exercise", dates:[]},
-    {id:4, name:"Read a book", dates:[]},
-    {id:5, name:"Learn something new", dates:[]},
-    {id:6, name:"Clean my room", dates:[]},
-    {id:7, name:"Sleep on time", dates:[]}
-  ]);
-
-  let tasks = load("dayflow_tasks", []);
-
-  function save() {
-    localStorage.setItem("dayflow_routines", JSON.stringify(routines));
-    localStorage.setItem("dayflow_tasks", JSON.stringify(tasks));
-  }
-
-  function escapeHTML(value) {
-    return String(value).replace(/[&<>"']/g, char => ({
-      "&":"&amp;",
-      "<":"&lt;",
-      ">":"&gt;",
-      '"':"&quot;",
-      "'":"&#39;"
-    })[char]);
-  }
-
-  function showPage(page) {
-    document.querySelectorAll(".page").forEach(el =>
-      el.classList.remove("active")
-    );
-
-    document.querySelectorAll(".nav button").forEach(el =>
-      el.classList.toggle("active", el.dataset.page === page)
-    );
-
-    document.getElementById(page).classList.add("active");
-  }
-
-  document.querySelectorAll(".nav button").forEach(button => {
-    button.addEventListener("click", () => showPage(button.dataset.page));
-  });
-
-  function addRoutine() {
-    const input = document.getElementById("routineInput");
-    const name = input.value.trim();
-    if (!name) return;
-
-    routines.push({
-      id: Date.now(),
-      name,
-      dates: []
-    });
-
-    input.value = "";
-    save();
-    render();
-  }
-
-  function toggleRoutine(id) {
-    const item = routines.find(r => r.id === id);
-    if (!item) return;
-
-    item.dates ||= [];
-    item.dates = item.dates.includes(dateKey)
-      ? item.dates.filter(d => d !== dateKey)
-      : [...item.dates, dateKey];
-
-    save();
-    render();
-  }
-
-  function deleteRoutine(id) {
-    routines = routines.filter(r => r.id !== id);
-    save();
-    render();
-  }
-
-  function addTask() {
-    const input = document.getElementById("taskInput");
-    const name = input.value.trim();
-    if (!name) return;
-
-    tasks.push({
-      id: Date.now(),
-      name,
-      done: false
-    });
-
-    input.value = "";
-    save();
-    render();
-  }
-
-  function toggleTask(id) {
-    const task = tasks.find(t => t.id === id);
-    if (!task) return;
-
-    task.done = !task.done;
-    save();
-    render();
-  }
-
-  function deleteTask(id) {
-    tasks = tasks.filter(t => t.id !== id);
-    save();
-    render();
-  }
-
-  function routineHTML(item) {
-    const done = (item.dates || []).includes(dateKey);
-
-    return `
-      <div class="routine-item">
-        <input type="checkbox" ${done ? "checked" : ""}
-          onchange="toggleRoutine(${item.id})">
-        <span class="${done ? "done" : ""}">
-          ${escapeHTML(item.name)}
-        </span>
-        <button class="delete-btn"
-          onclick="deleteRoutine(${item.id})">×</button>
-      </div>
-    `;
-  }
-
-  function taskHTML(task) {
-    return `
-      <div class="task-item">
-        <input type="checkbox" ${task.done ? "checked" : ""}
-          onchange="toggleTask(${task.id})">
-        <span class="${task.done ? "done" : ""}">
-          ${escapeHTML(task.name)}
-        </span>
-        <button class="delete-btn"
-          onclick="deleteTask(${task.id})">×</button>
-      </div>
-    `;
-  }
-
-  function calculateStreak() {
-    const activeDays = new Set();
-
-    routines.forEach(item => {
-      (item.dates || []).forEach(date => activeDays.add(date));
-    });
-
-    let streak = 0;
-    let cursor = new Date();
-
-    if (!activeDays.has(dateKey)) {
-      cursor.setDate(cursor.getDate() - 1);
-    }
-
-    while (true) {
-      const key = cursor.toLocaleDateString("en-CA");
-      if (!activeDays.has(key)) break;
-
-      streak++;
-      cursor.setDate(cursor.getDate() - 1);
-    }
-
-    return streak;
-  }
-
-  function render() {
-    const done = routines.filter(r =>
-      (r.dates || []).includes(dateKey)
-    ).length;
-
-    const total = routines.length;
-    const percent = total ? Math.round(done / total * 100) : 0;
-
-    document.getElementById("routineList").innerHTML =
-      routines.map(routineHTML).join("") ||
-      '<p class="empty">No routines yet. Add one above!</p>';
-
-    document.getElementById("dashboardRoutines").innerHTML =
-      routines.map(routineHTML).join("") ||
-      '<p class="empty">Add your first routine!</p>';
-
-    document.getElementById("taskList").innerHTML =
-      tasks.map(taskHTML).join("") ||
-      '<p class="empty">No tasks yet. Add one above!</p>';
-
-    document.getElementById("dashboardTasks").innerHTML =
-      tasks.filter(t => !t.done).map(taskHTML).join("") ||
-      '<p class="empty">You have no pending tasks. Great job! 🎉</p>';
-
-    document.getElementById("habitList").innerHTML =
-      routines.map(routineHTML).join("");
-
-    document.getElementById("routineCount").textContent =
-      `${done}/${total}`;
-
-    document.getElementById("taskCount").textContent =
-      tasks.filter(t => !t.done).length;
-
-    document.getElementById("streakCount").textContent =
-      calculateStreak() + " 🔥";
-
-    document.getElementById("mainProgress").style.width =
-      percent + "%";
-
-    document.getElementById("progressText").textContent =
-      percent + "% completed";
-
-    document.getElementById("summary").textContent =
-      done === total && total > 0
-        ? "Amazing! You completed all your routines! 🎉"
-        : `${total - done} routines remaining. Keep going!`;
-  }
-
-  render();
 </script>
 
 </body>
