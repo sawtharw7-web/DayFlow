@@ -405,3 +405,109 @@ input[type="text"]:focus {
     grid-template-columns: 1fr;
   }
 }
+
+/* DAYFLOW - MOBILE BOTTOM NAVIGATION */
+
+@media (max-width: 850px) {
+
+  .sidebar {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    width: 100%;
+    height: auto;
+
+    padding: 8px 10px;
+    padding-bottom: calc(8px + env(safe-area-inset-bottom));
+
+    background: rgba(255, 255, 255, 0.97);
+    border-top: 1px solid var(--border);
+    border-right: 0;
+
+    z-index: 100;
+  }
+
+  .logo,
+  .sidebar-footer {
+    display: none !important;
+  }
+
+  .nav {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+  }
+
+  .nav button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+
+    width: 100%;
+    min-width: 0;
+
+    padding: 9px 2px;
+    margin: 0;
+
+    border-radius: 12px;
+    background: transparent;
+
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .nav button span {
+    display: block;
+    font-size: 21px;
+    line-height: 1.2;
+  }
+
+  .nav button.active {
+    background: var(--accent-light);
+    color: var(--accent);
+    box-shadow: none;
+  }
+
+  .nav button:hover {
+    transform: none;
+  }
+
+  main {
+    margin-left: 0;
+    padding: 24px 16px calc(110px + env(safe-area-inset-bottom));
+    min-height: 100vh;
+  }
+
+  .topbar {
+    margin-bottom: 24px;
+  }
+
+}
+
+@media (max-width: 420px) {
+
+  .sidebar {
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+
+  .nav button {
+    font-size: 10px;
+  }
+
+  .nav button span {
+    font-size: 20px;
+  }
+
+}
