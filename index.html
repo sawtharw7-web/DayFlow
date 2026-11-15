@@ -5,18 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="theme-color" content="#101827">
+  <meta name="theme-color" content="#f5f7fc">
   <meta name="description" content="DayFlow - Your daily routine, habits and task planner.">
 
   <title>DayFlow - Daily Life Planner</title>
 
-  <!-- CSS -->
   <link rel="stylesheet" href="./styles.css">
-
-  <!-- PWA -->
   <link rel="manifest" href="./manifest.webmanifest">
 
-  <!-- APP ICON -->
   <link rel="icon" href="./assets/icon.png" type="image/png">
   <link rel="apple-touch-icon" href="./assets/icon.png">
 </head>
@@ -28,24 +24,30 @@
   <!-- SIDEBAR -->
   <aside class="sidebar">
 
-    <div class="logo">✦ DayFlow</div>
+    <div class="logo">DayFlow</div>
 
-    <div class="nav">
+    <nav class="nav">
+
       <button class="active" data-page="dashboard">
-        🏠 Dashboard
+        <span>🏠</span> Dashboard
       </button>
 
       <button data-page="routines">
-        🌱 Daily Routine
+        <span>🌱</span> Daily Routine
       </button>
 
       <button data-page="habits">
-        🔥 Habits
+        <span>🔥</span> Habits
       </button>
 
       <button data-page="tasks">
-        📝 My Tasks
+        <span>📝</span> My Tasks
       </button>
+
+    </nav>
+
+    <div class="sidebar-footer">
+      <p>Make every day count.</p>
     </div>
 
   </aside>
@@ -59,21 +61,21 @@
         <p class="date" id="todayDate"></p>
       </div>
 
-      <div>✨ Make today count</div>
+      <div class="topbar-message">
+        Make today count.
+      </div>
     </header>
 
     <!-- DASHBOARD -->
     <section id="dashboard" class="page active">
 
-      <div class="card">
+      <div class="card welcome-card">
 
         <p class="quote">
-          "Small steps every day lead to big changes."
+          Small steps every day lead to big changes.
         </p>
 
-        <h2 style="margin-top:15px;">
-          Your daily journey 🌟
-        </h2>
+        <h2>Your daily journey</h2>
 
         <p id="summary">
           Let's make today productive!
@@ -83,7 +85,7 @@
           <div class="progress-bar" id="mainProgress"></div>
         </div>
 
-        <p id="progressText" style="margin-top:10px;color:#c4b5fd;">
+        <p id="progressText" class="progress-text">
           0% completed
         </p>
 
@@ -92,38 +94,32 @@
       <!-- STATISTICS -->
       <div class="stats">
 
-        <div class="card">
+        <div class="card stat-card">
           <p>Daily Routines</p>
-          <div class="stat-number" id="routineCount">
-            0/0
-          </div>
+          <div class="stat-number" id="routineCount">0/0</div>
         </div>
 
-        <div class="card">
+        <div class="card stat-card">
           <p>My Tasks</p>
-          <div class="stat-number" id="taskCount">
-            0
-          </div>
+          <div class="stat-number" id="taskCount">0</div>
         </div>
 
-        <div class="card">
+        <div class="card stat-card">
           <p>Current Streak</p>
-          <div class="stat-number" id="streakCount">
-            0 🔥
-          </div>
+          <div class="stat-number" id="streakCount">0 🔥</div>
         </div>
 
       </div>
 
       <!-- TODAY ROUTINES -->
-      <div class="card">
-        <h2>Today's Routine 🌱</h2>
+      <div class="card section-card">
+        <h2>Today's Routine</h2>
         <div id="dashboardRoutines"></div>
       </div>
 
       <!-- TODAY TASKS -->
-      <div class="card">
-        <h2>Today's Tasks 📝</h2>
+      <div class="card section-card">
+        <h2>Today's Tasks</h2>
         <div id="dashboardTasks"></div>
       </div>
 
@@ -134,9 +130,9 @@
 
       <div class="card">
 
-        <h2>Daily Routine 🌱</h2>
+        <h2>Daily Routine</h2>
 
-        <p style="color:#94a3b8;margin-bottom:15px;">
+        <p class="page-description">
           Build your day, one small step at a time.
         </p>
 
@@ -150,11 +146,8 @@
             placeholder="Add a daily activity..."
           >
 
-          <button
-            class="add-btn"
-            onclick="addRoutine()"
-          >
-            Add
+          <button class="add-btn" onclick="addRoutine()">
+            + Add Routine
           </button>
 
         </div>
@@ -168,13 +161,13 @@
 
       <div class="card">
 
-        <h2>Habit Tracker 🔥</h2>
+        <h2>Habit Tracker</h2>
 
         <p class="quote">
           Consistency is more important than perfection.
         </p>
 
-        <div id="habitList" style="margin-top:20px;"></div>
+        <div id="habitList" class="habit-list"></div>
 
       </div>
 
@@ -185,7 +178,11 @@
 
       <div class="card">
 
-        <h2>My Tasks 📝</h2>
+        <h2>My Tasks</h2>
+
+        <p class="page-description">
+          Organize your tasks and stay focused.
+        </p>
 
         <div id="taskList"></div>
 
@@ -197,11 +194,8 @@
             placeholder="What do you need to do?"
           >
 
-          <button
-            class="add-btn"
-            onclick="addTask()"
-          >
-            Add
+          <button class="add-btn" onclick="addTask()">
+            + Add Task
           </button>
 
         </div>
@@ -214,15 +208,13 @@
 
 </div>
 
-<!-- MAIN JAVASCRIPT -->
 <script src="./app.js"></script>
 
-<!-- SERVICE WORKER -->
 <script>
   if ("serviceWorker" in navigator) {
     window.addEventListener("load", function () {
       navigator.serviceWorker.register("./sw.js")
-        .then(function (registration) {
+        .then(function () {
           console.log("DayFlow Service Worker Ready!");
         })
         .catch(function (error) {
