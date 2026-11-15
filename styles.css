@@ -511,3 +511,73 @@ input[type="text"]:focus {
   }
 
 }
+
+/* DAYFLOW - REFINED TYPOGRAPHY */
+
+body {
+  font-size: 14px;
+}
+
+.topbar h1 {
+  font-size: clamp(23px, 3.5vw, 29px);
+  letter-spacing: -0.7px;
+}
+
+.topbar-message {
+  font-size: 13px;
+}
+
+.date {
+  font-size: 13px;
+}
+
+.card h2 {
+  font-size: 20px;
+  line-height: 1.4;
+}
+
+.card p {
+  font-size: 14px;
+}
+
+.quote {
+  font-size: 14px;
+}
+
+.stat-number {
+  font-size: 30px;
+}
+
+.nav button {
+  font-size: 12px;
+}
+
+input[type="text"] {
+  font-size: 14px;
+}
+
+.add-btn {
+  font-size: 13px;
+}
+
+.progress-text {
+  font-size: 14px;
+}
+
+@media (max-width: 850px) {
+  .nav button {
+    font-size: 10px;
+  }
+
+  .nav button span {
+    font-size: 19px;
+  }
+
+  .card h2 {
+    font-size: 19px;
+  }
+
+  .stat-number {
+    font-size: 28px;
+  }
+}
