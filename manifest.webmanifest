@@ -1,0 +1,20 @@
+
+{
+  "name": "DayFlow - Daily Life Planner",
+  "short_name": "DayFlow",
+  "description": "Your daily routine, habits and task planner.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#101827",
+  "theme_color": "#101827",
+  "icons": [
+    {
+      "src": "./assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
