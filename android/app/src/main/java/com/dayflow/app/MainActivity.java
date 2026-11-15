@@ -9,7 +9,7 @@ import android.webkit.WebSettings;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-
+import android.graphics.Color;
 public class MainActivity extends Activity {
 
     private WebView webView;
